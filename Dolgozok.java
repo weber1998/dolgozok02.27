@@ -294,6 +294,8 @@ public class Dolgozok extends javax.swing.JFrame {
         
         comboAdd("L", jComboBox1);
         comboAdd("F", jComboBox2);
+        adatok(jComboBox1);
+        adatok(jComboBox2);
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -345,8 +347,8 @@ public class Dolgozok extends javax.swing.JFrame {
         jLabel10.setText(nev);
     }
     
-    public void adatok() {
-        String név = jComboBox1.getItemAt(jComboBox1.getSelectedIndex());
+    public void adatok(JComboBox box) {
+        String név = box.getItemAt(box.getSelectedIndex());
         jLabel11.setText(név);
         int i = 0;
         int miota = 0;
