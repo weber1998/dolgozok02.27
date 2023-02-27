@@ -64,9 +64,19 @@ public class Dolgozok extends javax.swing.JFrame {
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("lány");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("fiú");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("legidősebb:");
 
@@ -220,6 +230,16 @@ public class Dolgozok extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        legidosebbLany();
+        osszKorLany();
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+       legidosebbFiu();
+       osszKorFiu();
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -271,7 +291,6 @@ public class Dolgozok extends javax.swing.JFrame {
         Dolgozok Dolgozok = new Dolgozok();
         Dolgozok.comboLanyokAdd();
         
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Dolgozok().setVisible(true);
@@ -296,6 +315,7 @@ public class Dolgozok extends javax.swing.JFrame {
                     }
                 }
             }
+            jLabel8.setText(legnagyobb + " éves");
         return legnagyobb;
     }
     
@@ -308,13 +328,34 @@ public class Dolgozok extends javax.swing.JFrame {
                     }
                 }
             }
+            jLabel8.setText(legnagyobb + " éves");
         return legnagyobb;
     }
     
     
     
-    public int osszKor() {
-        return 0;
+    public int osszKorLany() {
+        int ossz = 0;
+        
+        for (int i = 0; i < dolgozok.size(); i++) {
+            if (dolgozok.get(i).getNeme() == "L") {
+                ossz += dolgozok.get(i).getKor();
+            }
+        }
+        jLabel8.setText(ossz + " év");
+        return ossz;
+    }
+    
+    public int osszKorFiu() {
+        int ossz = 0;
+        
+        for (int i = 0; i < dolgozok.size(); i++) {
+            if (dolgozok.get(i).getNeme() == "F") {
+                ossz += dolgozok.get(i).getKor();
+            }
+        }
+        jLabel8.setText(ossz + " év");
+        return ossz;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
