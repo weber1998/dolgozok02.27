@@ -68,6 +68,7 @@ public class DolgozokModell  {
         this.munktoltev = munktoltev;
     }
 
+    
     @Override
     public String toString() {
         return "DolgozokModell{" + "nev=" + nev + ", kor=" + kor + ", neme=" + neme + ", munktoltev=" + munktoltev + '}';
