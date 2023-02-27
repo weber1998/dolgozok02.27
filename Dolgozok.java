@@ -292,10 +292,10 @@ public class Dolgozok extends javax.swing.JFrame {
         
         Dolgozok Dolgozok = new Dolgozok();
         
-        comboAdd("L", jComboBox1);
-        comboAdd("F", jComboBox2);
-        adatok(jComboBox1);
-        adatok(jComboBox2);
+        Dolgozok.comboAdd("L", Dolgozok.jComboBox1);
+        Dolgozok.comboAdd("F", Dolgozok.jComboBox2);
+        Dolgozok.adatok(Dolgozok.jComboBox1);
+        Dolgozok.adatok(Dolgozok.jComboBox2);
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
