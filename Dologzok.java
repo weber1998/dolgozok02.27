@@ -4,10 +4,13 @@
  */
 package dolgozok;
 
-/**
- *
- * @author weber.krisztian
- */
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Dologzok extends javax.swing.JFrame {
 
     /**
@@ -178,7 +181,7 @@ public class Dologzok extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException{
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -203,6 +206,22 @@ public class Dologzok extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
+        
+        String fn = "emberek.txt";
+        Path path = Paths.get(fn);
+        List<String> sorok = Files.readAllLines(path);
+        //System.out.println("sorok száma: " + sorok.size());
+        String fejléc = sorok.get(0);
+        sorok.remove(0);
+        
+        ArrayList<DolgozokModell> dolgozok = new ArrayList<>();
+        for(String sor : sorok) {
+            // ha regurális kif. eleme a '.'. Ezért \\.
+            dolgozok.add(new DolgozokModell(sor, ";"));
+        }
+        
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Dologzok().setVisible(true);
