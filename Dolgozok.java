@@ -231,13 +231,15 @@ public class Dolgozok extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        legidosebbLany();
-        osszKorLany();
+        legidosebb("L");
+        osszKor("L");
+        hatEvesDolg("L");
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-       legidosebbFiu();
-       osszKorFiu();
+       legidosebb("F");
+       osszKor("F");
+       hatEvesDolg("F");
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     /**
@@ -289,7 +291,9 @@ public class Dolgozok extends javax.swing.JFrame {
         }
         
         Dolgozok Dolgozok = new Dolgozok();
-        Dolgozok.comboLanyokAdd();
+        
+        comboAdd("L", jComboBox1);
+        comboAdd("F", jComboBox2);
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -298,64 +302,53 @@ public class Dolgozok extends javax.swing.JFrame {
         });
     }
     
-    public void comboLanyokAdd() {
-     
+    public void comboAdd(String nem, JComboBox box) {
+        for (int i = 0; i < dolgozok.size(); i++) {
+            if (dolgozok.get(i).getNeme() == nem) {
+                box.addItem(dolgozok.get(i).getNev());
+            }
+        }
     }
     
     public void comboFiukAdd() {
         
     }
     
-    public int legidosebbLany() {
+    public void legidosebb(String nem) {
         int legnagyobb = 0;
             for (int i = 0; i < dolgozok.size(); i++) {
-                if (dolgozok.get(i).getNeme() == "L") {
+                if (dolgozok.get(i).getNeme() == nem) {
                     if (dolgozok.get(i).getKor() > legnagyobb) {
                         legnagyobb = dolgozok.get(i).getKor();
                     }
                 }
             }
             jLabel8.setText(legnagyobb + " éves");
-        return legnagyobb;
     }
     
-    public int legidosebbFiu() {
-        int legnagyobb = 0;
-            for (int i = 0; i < dolgozok.size(); i++) {
-                if (dolgozok.get(i).getNeme() == "F") {
-                    if (dolgozok.get(i).getKor() > legnagyobb) {
-                        legnagyobb = dolgozok.get(i).getKor();
-                    }
+    
+    
+    public void osszKor(String nem) {
+        int ossz = 0;
+        
+        for (int i = 0; i < dolgozok.size(); i++) {
+            if (dolgozok.get(i).getNeme() == nem) {
+                ossz += dolgozok.get(i).getKor();
+            }
+        }
+        jLabel9.setText(ossz + " év");
+    }
+    
+    public void hatEvesDolg(String nem) {
+        String nev = "";
+        for (int i = 0; i < dolgozok.size(); i++) {
+            if (dolgozok.get(i).getNeme() == nem) {
+                if (dolgozok.get(i).getMunktoltev() >= 6) {
+                    nev = dolgozok.get(i).getNev();
                 }
             }
-            jLabel8.setText(legnagyobb + " éves");
-        return legnagyobb;
-    }
-    
-    
-    
-    public int osszKorLany() {
-        int ossz = 0;
-        
-        for (int i = 0; i < dolgozok.size(); i++) {
-            if (dolgozok.get(i).getNeme() == "L") {
-                ossz += dolgozok.get(i).getKor();
-            }
         }
-        jLabel8.setText(ossz + " év");
-        return ossz;
-    }
-    
-    public int osszKorFiu() {
-        int ossz = 0;
-        
-        for (int i = 0; i < dolgozok.size(); i++) {
-            if (dolgozok.get(i).getNeme() == "F") {
-                ossz += dolgozok.get(i).getKor();
-            }
-        }
-        jLabel8.setText(ossz + " év");
-        return ossz;
+        jLabel10.setText(nev);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
