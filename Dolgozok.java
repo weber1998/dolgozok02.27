@@ -348,7 +348,7 @@ public class Dolgozok extends javax.swing.JFrame {
     }
     
     public void adatok(JComboBox box) {
-        String név = box.getItemAt(box.getSelectedIndex());
+        String név = box.getItemAt(box.getSelectedIndex()).toString();
         jLabel11.setText(név);
         int i = 0;
         int miota = 0;
