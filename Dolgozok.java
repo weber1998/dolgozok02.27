@@ -310,10 +310,6 @@ public class Dolgozok extends javax.swing.JFrame {
         }
     }
     
-    public void comboFiukAdd() {
-        
-    }
-    
     public void legidosebb(String nem) {
         int legnagyobb = 0;
             for (int i = 0; i < dolgozok.size(); i++) {
@@ -325,8 +321,6 @@ public class Dolgozok extends javax.swing.JFrame {
             }
             jLabel8.setText(legnagyobb + " éves");
     }
-    
-    
     
     public void osszKor(String nem) {
         int ossz = 0;
@@ -349,6 +343,18 @@ public class Dolgozok extends javax.swing.JFrame {
             }
         }
         jLabel10.setText(nev);
+    }
+    
+    public void adatok() {
+        String név = jComboBox1.getItemAt(jComboBox1.getSelectedIndex());
+        jLabel11.setText(név);
+        int i = 0;
+        int miota = 0;
+        while(név == dolgozok.get(i).getNev()) {
+            miota = dolgozok.get(i).getMunktoltev();
+            i++;
+        }
+        jLabel12.setText(miota + " éve");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
